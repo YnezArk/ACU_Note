@@ -1,0 +1,13 @@
+package com.example.acunote.repository;
+
+import com.example.acunote.model.Note;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+// 继承JpaRepository接口
+public interface NoteRepository extends JpaRepository<Note, Long> {
+    List<Note> findByOwner_Id(Long ownerId);
+}
