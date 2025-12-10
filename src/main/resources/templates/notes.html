@@ -67,8 +67,16 @@
 </div>
 
 <!-- 控制按钮 -->
+<script>
+    function logout() {
+    localStorage.removeItem('token');
+    window.location.href = '/login';
+}
+
+</script>
 <button onclick="loadNotes()">刷新</button>
-<button onclick="window.location.href='/login'">退出登录</button>
+<button onclick="logout()">退出登录</button>
+
 
 <div id="notesContainer"></div>
 

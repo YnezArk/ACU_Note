@@ -15,7 +15,7 @@ public class JwtUtil {
     private final String SECRET_KEY =// 这里是密钥，很长很长很长
             "YnezArkdeVeryLongSecretKeyStringHereWithAtLeast64CharactersforSecurityAndMyNameIsYinXuezhou666AndILoveMinecraftwhenIwasYoung";
     private final long EXPIRATION = 86400000; // token过期时间24 小时
-// 生成token
+// 生成token:jwt令牌
     public String generateToken(String username) {
         Map<String, Object> claims = new HashMap<>();
         return Jwts.builder()

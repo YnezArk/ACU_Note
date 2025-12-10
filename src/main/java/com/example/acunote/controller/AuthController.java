@@ -29,10 +29,10 @@ public class AuthController {
     // @RequestBody注解表示接收JSON数据
     public ResponseEntity<Map<String, String>> register(@RequestBody User user) {
         if (userRepository.findByUsername(user.getUsername()).isPresent()) {
-            return ResponseEntity.badRequest().body(Map.of("error", "Username already exists"));
+            return ResponseEntity.badRequest().body(Map.of("error", "用户名已存在"));
         }
         userRepository.save(user);
-        return ResponseEntity.ok(Map.of("message", "User registered successfully"));
+        return ResponseEntity.ok(Map.of("message", "注册成功"));
     }
 // 用户登录
     @PostMapping("/login")
@@ -50,11 +50,11 @@ public class AuthController {
             );
 
             String token = jwtUtil.generateToken(username);
-            return ResponseEntity.ok(Map.of("token", token, "message", "Login successful"));
+            return ResponseEntity.ok(Map.of("token", token, "message", "登陆成功"));
         } catch (Exception e) {
             System.out.println(">>> Login failed: " + e.getClass().getSimpleName() + " - " + e.getMessage());
             e.printStackTrace();
-            return ResponseEntity.status(401).body(Map.of("error", "Invalid username or password"));
+            return ResponseEntity.status(401).body(Map.of("error", "无效的用户名或密码"));
         }
 
     }
